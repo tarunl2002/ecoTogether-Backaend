@@ -84,7 +84,7 @@ router.put('/leave/:id', auth, async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        const initiative = await Initiative.findById(req.params.id).populate('participants', 'name');
+        const initiative = await Initiative.findById(req.params.id).populate('participants', 'name email');
         if (!initiative) {
             return res.status(404).json({ msg: 'Initiative not found' });
         }
